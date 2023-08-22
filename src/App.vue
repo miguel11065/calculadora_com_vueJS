@@ -1,5 +1,8 @@
 <script setup>
   import { reactive } from 'vue';
+  import Cabecalho from './components/Cabecalho.vue';
+  import Operacao from './components/Operacao.vue';
+  import Resposta from './components/Resposta.vue';
 
 
   const estado = reactive ({
@@ -49,19 +52,9 @@
 
 <template>
   <div class="container">
-    <header class="p-3 mb-4 mt-4 bg-light rounded-3">
-      <h1>Calculadora</h1>
-    </header>
-    <input type="number" required @keyup="evento => estado.numero1 = evento.target.value">
-    <select @change="evento => estado.operacao = evento.target.value">
-      <option value="soma">+</option>
-      <option value="sub">-</option>
-      <option value="div">÷</option>
-      <option value="mult">x</option>
-    </select>
-    <input type="number" required @keyup="evento => estado.numero2 = evento.target.value">
-    <h1 class="igual">=</h1>
-    <span v-if="operacoes() >= 0">{{operacoes()}}</span><span v-else>Preencha os campos</span>
+    <Cabecalho />
+    <Operacao :numero1="estado.numero1" :numero2="estado.numero2" :seleciona-operacao="evento => estado.operacao = evento.target.value"/>
+    <Resposta :resposta-da-operacao="operacoes"/>
   </div>
 </template>
 
@@ -79,35 +72,5 @@
     background-size: cover;
     padding-top: 0;
     border: 1px solid black;
-  }
-
-  h1 {
-    font-size: 50px;
-    background-color: #f2faef;
-  }
-
-  input{
-    padding: 10px;
-    width: 100%;
-    font-size: 30px;
-    border-radius: 10px;
-    border: 1px solid black;
-    background-color: hsl(188, 70%, 89%);
-  }
-
-  select{
-    padding: 10px;
-    width: 100%;
-    font-size: 30px;
-    border-radius: 10px;
-    border: 1px solid black;
-    background-color: hsl(188, 70%, 89%);
-  }
-
-  span{
-    font-size: 30px;
-    background-color: hsl(188, 70%, 89%);
-    border: 1px solid black;
-    border-radius: 10px;
   }
 </style>
