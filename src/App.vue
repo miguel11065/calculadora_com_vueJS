@@ -53,8 +53,8 @@
 <template>
   <div class="container">
     <Cabecalho />
-    <Operacao :numero1="estado.numero1" :numero2="estado.numero2" :seleciona-operacao="evento => estado.operacao = evento.target.value"/>
-    <Resposta :resposta-da-operacao="operacoes"/>
+    <Operacao :selecionaOperacao="evento=> estado.operacao = evento.target.value" :numero1="evento => estado.numero1 = evento.target.value" :numero2="evento => estado.numero2 = evento.target.value"></Operacao>
+    <Resposta :numero1="estado.numero1" :numero2="estado.numero2" :resposta-da-operacao="operacoes()"/>
   </div>
 </template>
 

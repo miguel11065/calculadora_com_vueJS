@@ -4,7 +4,7 @@
 
 <template>
     <h1 class="igual">=</h1>
-    <span v-if="props.respostaDaOperacao >= 0">{{operacoes()}}</span><span v-else>Preencha os campos</span>
+    <span v-if="props.respostaDaOperacao >= 0">{{props.respostaDaOperacao}}</span><span v-else>Preencha os campos</span>
 </template>
 
 <style scoped>
